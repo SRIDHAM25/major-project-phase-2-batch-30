@@ -1,0 +1,105 @@
+{% extends 'users/base.html' %}
+{% block userblock %}
+{% load staticfiles %}
+    <style>
+    body{
+
+    }
+    * {
+          box-sizing: border-box;
+        }
+
+        #myInput {
+          background: url("{% static 'search.png' %}");
+          background-size:contain;
+          background-position: 10px 1px;
+          background-repeat: no-repeat;
+          width: 194%;
+          margin-left:-5px;
+          font-size: 16px;
+          padding: 12px 20px 12px 60px;
+          border: 10px inset 00BFFF;
+          margin-bottom: 12px;
+          border-radius:10px;
+          margin-top: 100px;
+          background-color: aliceblue;
+        }
+
+        #myTable {
+        font-family: Abel;
+        font-size:20px;
+        border-collapse: collapse;
+        width: 62%;
+
+
+        }
+
+        #myTable td, #myTable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #myTable tr:nth-child(even){background-color: #f2f2f2;}
+
+        #myTable tr:hover {background-color: #ddd;}
+
+        #myTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+         background-color:mediumpurple;
+         color: white;
+        }
+        .submit{
+        background: url("{% static 'submit3.png' %}");
+        background-size:100% 100%;
+        height:50px;
+        width:150px;
+        border-radius:10px;
+        margin-left:-134px;
+        }
+
+    </style>
+
+<body>
+
+
+
+<div class="main">
+
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <td><input type="text" id="myInput" onkeyup="myFunction()" name="search" placeholder="Search Datas"></td>
+        <tr>
+            <td style="text-align:center;" colspan="2"><input type="submit" class="submit" name="submit" value=""></td>
+        </tr></table>
+            {% for v in objes %}
+        <table id="myTable" >
+
+
+                <thead>
+
+                <th>CORPORATE NAME</th>
+                <th>DEPARTMENT</th>
+                <th>DESCRIPTION</th>
+                <th>WEBSITES</th>
+                <th>METHODS</th>
+                <th>RECORDS</th>
+                </thead>
+
+
+            <tr>
+                <td>{{v.cname}}</td>
+                <td>{{v.dept}}</td>
+                <td>{{v.description}}</td>
+                <td>{{v.website}}</td>
+                <td>{{v.method}}</td>
+                <td>{{v.record}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+</body>
+{% endblock %}

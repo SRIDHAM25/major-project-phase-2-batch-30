@@ -1,0 +1,88 @@
+{% extends 'users/base.html' %}
+{% block userblock %}
+{% load staticfiles %}
+<style>
+    #customers{
+       font-family:Abel;
+       border-collapse:collapse;
+       width:40%;
+       font-size:25px;
+       color:papayawhip;
+       background-color:green;
+         padding: 14px;
+    margin-top: 113px;
+    margin-left: 435px;
+
+       }
+       #customers td, #customers th{
+       border:1px solid #ddd;
+       padding:8px;
+
+       }
+
+
+
+       #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: black  ;
+    color: white;
+
+}
+.imga{
+background: url("{% static 'admin.jpeg' %}");
+background-size:100% 100%;
+height:-webkit-fill-available;
+width:100%;
+position: absolute;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+
+
+</style>
+
+
+<body>
+<form method="POST">
+    {% csrf_token %}
+    <div class="imga">
+    <table id="customers">
+        <tr>
+            <td>NAME :</td>
+            <td>{{ object.name }}</td>
+        </tr>
+        <tr>
+            <td>EMAIL :</td>
+            <td>{{ object.email }}</td>
+        </tr>
+        <tr>
+            <td>PASSWORD :</td>
+            <td>{{ object.password }}</td>
+        </tr>
+        <tr>
+            <td>PHONE NUMBER</td>
+            <td>{{ object.phoneno }}</td>
+        </tr>
+        <tr>
+            <td>ADDRESS :</td>
+            <td>{{ object.address}}</td>
+        </tr>
+        <tr>
+            <td>LOCATION</td>
+            <td>{{ object.location }}</td>
+        </tr>
+    </table>
+    </div>
+
+
+</form>
+
+</body>
+{% endblock %}
